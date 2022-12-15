@@ -8,14 +8,22 @@ class Player(models.Model):
     last_name=models.CharField('First name', max_length=255)
     coins=models.IntegerField('Coins')
     
-    def __str__(self) -> str:
-        return "%s %s" % (self.first_name, self.last_name)
+    class Meta:
+        verbose_name='Player'
+        verbose_name_plural='Players'
     
-class Games(models.Model):
+    def __str__(self) -> str:
+        return (self.first_name, self.last_name)
+    
+class Game(models.Model):
     
     id=models.IntegerField('Pk',primary_key=True)
     game=models.CharField('Uploaded Games', max_length=255)
     player=models.ForeignKey(Player, on_delete=models.CASCADE)
     
+    class Meta:
+        verbose_name='Game'
+        verbose_name_plural='Games'
+    
     def __str__(self) -> str:
-        return "%s %s, Game:%s" % (Player.first_name, Player.last_name, self.game)
+        return (Player.first_name, Player.last_name, self.game)
