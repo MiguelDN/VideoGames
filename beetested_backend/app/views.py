@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from rest_framework import viewsets,status
 from rest_framework.response import Response
 from app.serializers.player_serializer import PlayerSerializer
+from app.models import Player
 
 # Create your views here.
 def saludo(request):
@@ -11,7 +12,7 @@ def saludo(request):
 
 class PlayerViewSet(viewsets.ModelViewSet):
     serializer_class=PlayerSerializer
-    queryset = PlayerSerializer.Meta.model.objects.all()
+    queryset = Player.objects.all()
     
     
     

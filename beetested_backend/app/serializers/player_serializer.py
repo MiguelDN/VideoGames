@@ -7,12 +7,12 @@ class PlayerSerializer(serializers.ModelSerializer):
     
     class Meta:
         model=Player
-        exclude=()
+        fields='__all__'
         
     def to_representation(self, instance):
         return {
             'id':instance.id,
-            'name': instance.first_name,
-            'last name':instance.last_name,
+            'first_name': instance.first_name,
+            'last_name':instance.last_name,
             'coins':instance.coins,
             }

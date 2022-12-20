@@ -3,6 +3,6 @@ from app.views import PlayerViewSet
 
 router=DefaultRouter()
 
-router.register(r'player', PlayerViewSet, basename='player')
+router.register(r'players', PlayerViewSet, basename='player')
 
 urlpatterns = router.urls
