@@ -70,10 +70,6 @@ export const renderDetailsButton = (params) => {
     )
 }
 
-const handleDelete = async (playerId) => {
-    await deletePlayer(playerId);
-    listPlayers();
-}
 
 export const renderDeleteButton = (params) => {
     return (

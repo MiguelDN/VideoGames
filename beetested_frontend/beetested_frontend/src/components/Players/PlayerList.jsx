@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import RenderExpandCellGrid from "../RenderExpandCellGrid";
+import { Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import '../../index.css'
 
 
 // Components:
 import PlayerItem from "./PlayerItem";
 
 import * as PlayersServer from "./PlayersServer";
+import { Button } from "reactstrap";
 
 const PlayerList = () => {
     const [players, setPlayers] = useState([]);
+    const navigate = useNavigate();
 
     const listPlayers = async () => {
         try {
@@ -31,6 +36,26 @@ const PlayerList = () => {
         
             {players ? (
                 <>
+                    <div style={{
+                        color: 'black',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        
+                    }}>
+                        <Button onClick={() => navigate('/PlayerForm')}
+                            style={{
+                                color: 'black',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                backgroundColor: 'green'
+                            }}
+                        >Add player</Button>
+                        
+                        
+                       
+                </div>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -39,14 +64,14 @@ const PlayerList = () => {
                 }}>
                     <RenderExpandCellGrid />
                 </div>
-                <div className="row" >
+                {/* <div className="row" >
                     {
                         players.map((player) => (
                             
                             <PlayerItem key={player.id} player={player} listPlayers={listPlayers} />
                         ))
                     }
-                </div >
+                </div > */}
                 </>
             ) : (<p>loading</p>)}
         </>
