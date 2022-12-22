@@ -5,21 +5,21 @@ import { useNavigate } from "react-router-dom";
 import '../../index.css'
 
 
-// Components:
-import PlayerItem from "./PlayerItem";
 
-import * as PlayersServer from "./PlayersServer";
+
+import * as GamesServer from "./GamesServer";
 import { Button } from "reactstrap";
+import RenderExpandCellGridGames from "../RenderExpandCellGridGames";
 
 const PlayerList = () => {
-    const [players, setPlayers] = useState([]);
+    const [games, setGames] = useState([]);
     const navigate = useNavigate();
 
-    const listPlayers = async () => {
+    const listGames = async () => {
         try {
-            const res = await PlayersServer.listPlayers();
+            const res = await GamesServer.listGames();
             const data = await res.json();
-            setPlayers(data);
+            setGames(data);
             console.log('players', data)
         } catch (error) {
             console.log(error);
@@ -27,26 +27,26 @@ const PlayerList = () => {
     };
 
     useEffect(() => {
-        listPlayers();
+        listGames();
     }, []);
 
     return (
         <>
-            {players ? (
+            {games ? (
                 <>
                     <strong>
                         <div
                             style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
                             }}
                         >
                             <Button
                                 color='string'
-                                onClick={() => navigate('/PlayerForm')
+                                onClick={() => navigate('/GameForm')
                                 }>
-                                <h3>ADD PLAYER</h3>
+                                <h3>ADD GAME</h3>
                             </Button>
                         </div>
                     </strong>
@@ -56,7 +56,7 @@ const PlayerList = () => {
                         justifyContent: 'center',
                         marginTop: 20
                     }}>
-                        <RenderExpandCellGrid />
+                        <RenderExpandCellGridGames />
                     </div>
                     {/* <div className="row" >
                     {

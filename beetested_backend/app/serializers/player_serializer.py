@@ -16,3 +16,5 @@ class PlayerSerializer(serializers.ModelSerializer):
             'last_name':instance.last_name,
             'coins':instance.coins,
             }
+        
+

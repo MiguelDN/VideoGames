@@ -22,4 +22,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('saludo/',saludo),
     path('player/', include('app.routers.routers')),
+    path('game/', include('app.routers.routers')),
 ]

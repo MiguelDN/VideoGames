@@ -8,7 +8,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import {useEffect, useState} from 'react'
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { renderDetailsButton, renderDeleteButton } from './Players/PlayersServer';
+import { renderDetailsButton, renderDeleteButton } from './games/GamesServer';
 
 
 
@@ -136,7 +136,6 @@ renderCellExpand.propTypes = {
 
 
 
-
 const columns = [
   {
     field: 'id',
@@ -145,26 +144,20 @@ const columns = [
     renderCell: renderCellExpand
   },
   {
-    field: 'first_name',
-  headerName: 'First Name',
+    field: 'game',
+  headerName: 'Game',
   width: 170,
   renderCell: renderCellExpand
   },
   {
-    field: 'last_name',
-    headerName: 'Last Name',
+    field: 'player',
+    headerName: 'Player',
     width: 170,
     renderCell: renderCellExpand,
   },
   {
-    field: 'coins',
-    headerName: 'Coins',
-    width: 150,
-    renderCell: renderCellExpand,
-  },
-  {
     field: 'col5',
-    headerName: 'Update',
+    headerName: 'View',
     width: 150,
     renderCell: renderDetailsButton,
   },
@@ -180,7 +173,7 @@ const columns = [
 
 
 
-export default function RenderExpandCellGrid() {
+export default function RenderExpandCellGridGames() {
   
 
 const [rows, setRows] = useState(null)
@@ -193,7 +186,7 @@ useEffect(() => {
 
 
 const obtenerDatos= async () => {
-  const api = await fetch("http://127.0.0.1:8000/player/players/");
+  const api = await fetch("http://127.0.0.1:8000/game/games/");
   const characterApi = await api.json();
   console.log(characterApi)
   setRows(characterApi)

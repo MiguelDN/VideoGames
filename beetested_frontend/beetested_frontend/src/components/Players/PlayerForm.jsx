@@ -30,9 +30,10 @@ const PlayerForm = () => {
                     setPlayer(initialState);
                 }
             } else {
+                console.log('handleSubmit player',player)
                 await PlayerServer.updatePlayer(params.id, player);
             }
-            navigate("/");
+            navigate("/PlayerList");
         } catch (error) {
             console.log(error);
         }
