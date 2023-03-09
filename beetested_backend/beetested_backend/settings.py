@@ -84,7 +84,7 @@ WSGI_APPLICATION = "beetested_backend.wsgi.application"
 DATABASES = {
     "default": {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'beetested_backend',
+        'NAME': 'beetested',
         'USER': 'postgres',
         'PASSWORD': 'miguel',
         'HOST': 'localhost',
